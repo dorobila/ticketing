@@ -1,3 +1,12 @@
+https://34.89.29.209/api/users/currentuser - link to google cloud
+
+
+
+
+
+
+
+
 docker build -t dorobila/posts
 docker run [image id or image tag]
 docker run -it [image id or image tag] [cmd]
