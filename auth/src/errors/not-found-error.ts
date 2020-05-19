@@ -5,11 +5,11 @@ export class NotFoundError extends CustomError {
 
   constructor() {
     super('Route not found');
-    // Only because we are extending a build in class and in tsconfig target is set to 'es5'
+
     Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 
-  serialiseErrors() {
+  serializeErrors() {
     return [{ message: 'Not Found' }];
   }
 }

@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/api/users/currentuser', (req, res) => {
-  res.send('Helloooo!');
+  res.send('Hi there!');
 });
 
-export { router as curentUserRouter };
+export { router as currentUserRouter };

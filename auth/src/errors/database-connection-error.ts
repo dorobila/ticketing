@@ -6,11 +6,11 @@ export class DatabaseConnectionError extends CustomError {
 
   constructor() {
     super('Error connecting to db');
-    // Only because we are extending a build in class and in tsconfig target is set to 'es5'
+
     Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
   }
 
-  serialiseErrors() {
+  serializeErrors() {
     return [{ message: this.reason }];
   }
 }

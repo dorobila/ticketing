@@ -4,7 +4,7 @@ import { json } from 'body-parser';
 import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
 
-import { curentUserRouter } from './routes/current-user';
+import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
@@ -12,7 +12,6 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
-// Trust first proxy coming through ingres-ngnix
 app.set('trust proxy', true);
 app.use(json());
 app.use(
@@ -22,7 +21,7 @@ app.use(
   }),
 );
 
-app.use(curentUserRouter);
+app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
@@ -34,19 +33,23 @@ app.all('*', async (req, res) => {
 app.use(errorHandler);
 
 const start = async () => {
+  if (!process.env.JWT_KEY) {
+    throw new Error('JWT_KEY must be defined');
+  }
+
   try {
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log('connected to mongodb');
+    console.log('Connected to MongoDb');
   } catch (err) {
     console.error(err);
   }
 
   app.listen(3000, () => {
-    console.log('Listening on port 3000!');
+    console.log('Listening on port 3000!!!!!!!!');
   });
 };
 

@@ -8,9 +8,9 @@ build:
   # local:
   #   push: false
   googleCloudBuild:
-    projectId: ticketist-276316
+    projectId: ticketist-777
   artifacts:
-    - image: us.gcr.io/ticketist-276316/auth
+    - image: us.gcr.io/ticketist-777/auth
       context: auth
       docker:
         dockerfile: Dockerfile
