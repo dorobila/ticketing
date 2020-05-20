@@ -1,12 +1,3 @@
-https://34.89.29.209/api/users/currentuser - link to google cloud
-
-
-
-May: 6th, 7th, 8th, 11th
-June: 15th - 19th
-
-
-
 
 docker build -t dorobila/posts
 docker run [image id or image tag]
